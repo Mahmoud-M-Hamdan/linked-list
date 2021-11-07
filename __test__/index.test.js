@@ -10,16 +10,16 @@ describe('Linked list', () => {
     expect(list.head).toBeNull();
   });
 
-  it('append to linkedList works', () => {
+  it('insert to linkedList works', () => {
 
     let list = new LinkedList();
 
-    list.append('One');
+    list.insert('One');
 
     // check if the first node value is correct
     expect(list.head.value).toEqual('One');
 
-    list.append('Two');
+    list.insert('Two');
 
     // just make sure the head remains the same as the first value
     expect(list.head.value).toEqual('One');
@@ -46,7 +46,7 @@ describe('Linked list', () => {
     list.insert('two');
 
 
-    expect(list.returnedLinkedlList).toBe('{one} -> {two} -> NULL');
+    expect(list.head.next).not.toBeNull();
   });
 
   it(' Will return true when finding a value within the linked list that exists', () => {
@@ -54,17 +54,25 @@ describe('Linked list', () => {
 
     list.insert('one');
     list.insert('two');
-    let isExist = list.includes('two');
+    let isExist = list.includes('one');
     expect(isExist).toBe(true);
   });
 
   it('Can properly insert into the linked list', () => {
     let list = new LinkedList();
     list.insert('one');
+
+
+    expect(list.head.value).toBe('one');
+    expect(list.head.next).toBeNull();
+  });
+
+  it('Can properly return a collection of all the values that exist in the linked list', () => {
+    let list = new LinkedList();
+    list.insert('one');
     list.insert('two');
-
-
-    expect(list.returnedLinkedlList).toBe('{one} -> {two} -> Null');
+    list.toString();
+    expect(list.toString()).toBe('{ one } -> { two } -> NULL');
   });
 
 });
