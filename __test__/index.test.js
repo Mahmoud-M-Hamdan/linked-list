@@ -193,4 +193,95 @@ describe('Linked list', () => {
     expect(kthValue).toBe('3');
   });
 
+  //////////////////////////////////////////// Challenge 08 testing //////////////////////////////////////
+
+  test('ziplists function', () => {
+    let listA = {
+      head: {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 3,
+            next: null,
+          },
+        },
+      },
+    };
+
+    let listb = {
+      head: {
+        value: 4,
+        next: {
+          value: 5,
+          next: {
+            value: 6,
+            next: null,
+          },
+        },
+      },
+    };
+
+    let list = new LinkedList();
+
+    list.zipLists(listA, listb);
+
+    expect(list.toString()).toEqual(
+      '{1} -> {4} -> {2} -> {5} -> {3} -> {6} -> Null'
+    );
+
+    listA = {
+      head: {
+        value: 1,
+        next: {
+          value: 2,
+          next: null,
+        },
+      },
+    };
+
+    listb = {
+      head: {
+        value: 4,
+        next: {
+          value: 5,
+          next: {
+            value: 6,
+            next: null,
+          },
+        },
+      },
+    };
+
+    list.zipLists(listA, listb);
+
+    expect(list.toString()).toEqual('{1} -> {4} -> {2} -> {5} -> {6} -> Null');
+
+    listA = {
+      head: {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 3,
+            next: null
+          },
+        },
+      },
+    };
+
+    listb = {
+      head: {
+        value: 4,
+        next: {
+          value: 5,
+          next: null,
+        },
+      },
+    };
+
+    list.zipLists(listA, listb);
+
+    expect(list.toString()).toEqual('{1} -> {4} -> {2} -> {5} -> {3} -> Null');
+  });
 });
